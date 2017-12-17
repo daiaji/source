@@ -11,17 +11,17 @@ include $(INCLUDE_DIR)/kernel.mk
 
 PKG_NAME:=wireguard
 
-PKG_VERSION:=0.0.20171101
+PKG_VERSION:=0.0.20171211
 PKG_RELEASE:=1
 
 PKG_SOURCE:=WireGuard-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=https://git.zx2c4.com/WireGuard/snapshot/
-PKG_HASH:=096b6482a65e566c7bf8c059f5ee6aadb2de565b04b6d810c685f1c377540325
+PKG_HASH:=57d799d35e92c905e548d00adeb7ed1ead4d6560f084c99e5aae0a87b4eb09e4
 
 PKG_LICENSE:=GPL-2.0 Apache-2.0
 PKG_LICENSE_FILES:=COPYING
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/WireGuard-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(KERNEL_BUILD_DIR)/WireGuard-$(PKG_VERSION)
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 
@@ -36,7 +36,6 @@ define Package/wireguard/Default
   SUBMENU:=VPN
   URL:=https://www.wireguard.com
   MAINTAINER:=Baptiste Jonglez <openwrt@bitsofnetworks.org>, \
-              Kevin Darbyshire-Bryant <ldir@darbyshire-bryant.me.uk>, \
               Dan Luedtke <mail@danrl.com>, \
               Jason A. Donenfeld <Jason@zx2c4.com>
 endef

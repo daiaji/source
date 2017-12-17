@@ -64,6 +64,7 @@ define Device/omega2
   DEVICE_TITLE := Onion Omega2
   DEVICE_PACKAGES:= kmod-usb2 kmod-usb-ohci uboot-envtools
 endef
+TARGET_DEVICES += omega2
 
 define Device/omega2p
   DTS := OMEGA2P
@@ -71,7 +72,7 @@ define Device/omega2p
   DEVICE_TITLE := Onion Omega2+
   DEVICE_PACKAGES:= kmod-usb2 kmod-usb-ohci uboot-envtools kmod-sdhci-mt7620
 endef
-TARGET_DEVICES += omega2 omega2p
+TARGET_DEVICES += omega2p
 
 define Device/pbr-d1
   DTS := PBR-D1
@@ -98,6 +99,23 @@ define Device/tl-wr840n-v4
   IMAGE/sysupgrade.bin := tplink-v2-image -s -e | append-metadata | \
 	check-size $$$$(IMAGE_SIZE)
 endef
+TARGET_DEVICES += tl-wr840n-v4
+
+define Device/tl-wr840n-v5
+  DTS := TL-WR840NV5
+  IMAGE_SIZE := 3840k
+  DEVICE_TITLE := TP-Link TL-WR840N v5
+  TPLINK_FLASHLAYOUT := 4Mmtk
+  TPLINK_HWID := 0x08400005
+  TPLINK_HWREV := 0x1
+  TPLINK_HWREVADD := 0x5
+  TPLINK_HVERSION := 3
+  KERNEL := $(KERNEL_DTB)
+  KERNEL_INITRAMFS := $(KERNEL_DTB) | tplink-v2-header -e
+  IMAGE/sysupgrade.bin := tplink-v2-image -s -e | append-metadata | \
+	check-size $$$$(IMAGE_SIZE)
+endef
+TARGET_DEVICES += tl-wr840n-v5
 
 define Device/tl-wr841n-v13
   $(Device/tl-wr840n-v4)
@@ -107,7 +125,15 @@ define Device/tl-wr841n-v13
   TPLINK_HWREV := 0x268
   TPLINK_HWREVADD := 0x13
 endef
-TARGET_DEVICES += tl-wr840n-v4 tl-wr841n-v13
+TARGET_DEVICES += tl-wr841n-v13
+
+define Device/u7628-01-128M-16M
+  DTS := U7628-01-128M-16M
+  IMAGE_SIZE := 16064k
+  DEVICE_TITLE := UniElec U7628-01 (128M RAM/16M flash)
+  DEVICE_PACKAGES := kmod-usb2 kmod-usb-ohci kmod-usb-ledtrig-usbport
+endef
+TARGET_DEVICES += u7628-01-128M-16M
 
 define Device/vocore2
   DTS := VOCORE2
@@ -116,6 +142,7 @@ define Device/vocore2
   DEVICE_PACKAGES := kmod-usb2 kmod-usb-ohci kmod-usb-ledtrig-usbport \
     kmod-sdhci-mt7620
 endef
+TARGET_DEVICES += vocore2
 
 define Device/vocore2lite
   DTS := VOCORE2LITE
@@ -124,7 +151,7 @@ define Device/vocore2lite
   DEVICE_PACKAGES := kmod-usb2 kmod-usb-ohci kmod-usb-ledtrig-usbport \
     kmod-sdhci-mt7620
 endef
-TARGET_DEVICES += vocore2 vocore2lite
+TARGET_DEVICES += vocore2lite
 
 define Device/wcr-1166ds
   DTS := WCR-1166DS
@@ -163,6 +190,7 @@ define Device/wrtnode2p
   DEVICE_TITLE := WRTnode 2P
   DEVICE_PACKAGES := kmod-usb2 kmod-usb-ohci kmod-usb-ledtrig-usbport
 endef
+TARGET_DEVICES += wrtnode2p
 
 define Device/wrtnode2r
   DTS := WRTNODE2R
@@ -170,4 +198,4 @@ define Device/wrtnode2r
   DEVICE_TITLE := WRTnode 2R
   DEVICE_PACKAGES := kmod-usb2 kmod-usb-ohci
 endef
-TARGET_DEVICES += wrtnode2p wrtnode2r
+TARGET_DEVICES += wrtnode2r

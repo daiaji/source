@@ -25,6 +25,7 @@ get_status_led() {
 	ex2700|\
 	ex3700|\
 	fonera20n|\
+	firewrt|\
 	hg255d|\
 	kn|\
 	kn_rc|\
@@ -37,6 +38,7 @@ get_status_led() {
 	nbg-419n2|\
 	pwh2004|\
 	r6220|\
+	tplink,tl-mr3420-v5|\
 	tl-wr840n-v4|\
 	tl-wr840n-v5|\
 	tl-wr841n-v13|\
@@ -174,7 +176,7 @@ get_status_led() {
 		status_led="$boardname:blue:status"
 		;;
 	linkits7688)
-		[ "$1" = "upgrade" ] && status_led="mediatek:orange:wifi"
+		status_led="linkit-smart-7688:orange:wifi"
 		;;
 	m2m)
 		status_led="$boardname:blue:wifi"
@@ -222,8 +224,7 @@ get_status_led() {
 		;;
 	re6500|\
 	whr-1166d|\
-	whr-600d|\
-	widora-neo)
+	whr-600d)
 		status_led="$boardname:orange:wifi"
 		;;
 	mzk-ex300np|\
@@ -283,6 +284,9 @@ get_status_led() {
 	wlr-6000|\
 	zbt-we2026)
 		status_led="$boardname:red:power"
+		;;
+	widora-neo)
+		status_led="widora:orange:wifi"
 		;;
 	wzr-agl300nh)
 		status_led="$boardname:green:router"
